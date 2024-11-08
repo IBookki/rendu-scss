@@ -1,0 +1,240 @@
+@mixin grid-layout($columns, $gap) {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax($columns, 1fr));
+    gap: $gap;
+  }
+  
+
+  @mixin card-shadow($color, $blur) {
+    box-shadow: 0 4px $blur $color;
+  }
+  
+ 
+  @mixin transition($property, $duration) {
+    transition: $property $duration ease;
+  }
+  
+
+  @mixin main-text($size, $weight: normal, $color: $text-color) {
+    font-size: $size;
+    font-weight: $weight;
+    color: $color;
+  }
+  
+
+  @mixin secondary-text($size, $color: gray) {
+    font-size: $size;
+    color: $color;
+  }
+  
+$background-color: #fdf0e1;
+$text-color: #0e1b31;       
+$button-color: #0e1b31;
+$font-primary: 'YourFontName', sans-serif;
+
+$h1-size: 3rem;
+$h2-size: 2rem;
+$text-size: 1rem;
+
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: $font-primary;
+  background-color: $background-color;
+  color: $text-color;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+  
+    .logo {
+      height: 50px;
+      width: auto;
+    }
+  
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+  
+      a {
+        color: $text-color;
+        text-decoration: none;
+        font-size: $text-size;
+  
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+    }
+  
+    .search-login {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+  
+      .search-bar {
+        padding: 0.5rem 1rem;
+        border-radius: 1.5rem;
+        border: none;
+      }
+  
+      .login-button {
+        background-color: $button-color;
+        color: #fff;
+        padding: 0.5rem 1rem;
+        border-radius: 1.5rem;
+        border: none;
+        cursor: pointer;
+      }
+    }
+  }
+  
+.main-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 2rem;
+
+  .text-content {
+    h1 {
+      font-size: $h1-size;
+      color: $text-color;
+    }
+
+    h2 {
+      font-size: $h2-size;
+      color: $text-color;
+      margin-top: 0.5rem;
+    }
+
+    p {
+      font-size: $text-size;
+      margin-top: 1rem;
+    }
+
+    .buttons {
+      display: flex;
+      gap: 1rem;
+      margin-top: 1.5rem;
+    }
+  }
+
+  .image {
+    img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 1rem;
+    }
+  }
+}
+
+.button {
+  padding: 0.5rem 1.5rem;
+  border-radius: 1.5rem;
+  font-size: $text-size;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+
+  &.outline {
+    background: none;
+    border: 2px solid $button-color;
+    color: $button-color;
+
+    &:hover {
+      background-color: rgba(14, 27, 49, 0.1);
+    }
+  }
+
+  &.filled {
+    background-color: $button-color;
+    color: #fff;
+    border: none;
+
+    &:hover {
+      background-color: darken($button-color, 10%);
+    }
+  }
+}
+
+.gallery-section {
+    padding: 2rem;
+    background-color: #ffffff;
+  
+    .section-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1.5rem;
+  
+      h2 {
+        @include main-text(1.5rem, bold);
+      }
+  
+      .view-more {
+        @include main-text(1rem, normal, $button-color);
+        text-decoration: none;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+  
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+    }
+  
+    .cards-container {
+      @include grid-layout(200px, 1.5rem);
+    }
+  
+    .card {
+      background-color: #fff;
+      border-radius: 0.5rem;
+      @include card-shadow(rgba(0, 0, 0, 0.1), 8px);
+      overflow: hidden;
+      @include transition(transform, 0.3s);
+  
+      &:hover {
+        transform: translateY(-5px);
+      }
+  
+      .card-image {
+        img {
+          width: 100%;
+          height: auto;
+        }
+      }
+  
+      .card-content {
+        padding: 1rem;
+  
+        .card-title {
+          @include main-text(1rem, bold);
+        }
+  
+        .card-details {
+          @include secondary-text(0.875rem);
+          margin-top: 0.5rem;
+          display: flex;
+          flex-direction: column;
+          gap: 0.3rem;
+        }
+  
+        .card-price {
+          @include main-text(1rem, bold);
+          margin-top: 0.5rem;
+        }
+      }
+    }
+  }
+  
