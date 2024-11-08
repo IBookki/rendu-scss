@@ -195,6 +195,7 @@ body {
   
     .cards-container {
       @include grid-layout(200px, 1.5rem);
+      display: flex;
     }
   
     .card {
@@ -237,4 +238,4 @@ body {
       }
     }
   }
-  
+
