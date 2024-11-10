@@ -420,4 +420,102 @@ body {
       }
     }
   }
+
+  .newsletter-section {
+    padding-top: 2rem;
+    padding-right: 15rem;
+    padding-left: 15rem;
+    background-color: $background-color;
+  
+    .newsletter-content {
+      background-color: $button-color;
+      border-radius: 1rem;
+      padding: 1.5rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      
+      h2 {
+        @include main-text(1.5rem, bold, #ffffff);
+        margin-right: 2rem;
+      }
+  
+      .newsletter-form {
+        display: flex;
+        align-items: center;
+        gap: 4rem;
+  
+        .email-input {
+          padding: 0.75rem 1rem;
+          border-radius: 0.5rem;
+          border: 1px solid #ddd;
+          font-size: $text-size;
+          width: 250px;
+        }
+  
+        .btn-filled {
+          @include main-text($text-size, bold, #ffffff);
+          padding: 0.75rem 1.5rem;
+          background-color: #ffffff;
+          color: $button-color;
+          border-radius: 0.5rem;
+          cursor: pointer;
+          border: none;
+          transition: background-color 0.3s ease;
+  
+          &:hover {
+            background-color: darken(#ffffff, 10%);
+          }
+        }
+      }
+    }
+  }
+  
+  .footer {
+    padding: 2rem;
+    background-color: $background-color;
+    text-align: center;
+    font-size: 0.875rem;
+    color: $text-color;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+  
+    .footer-nav {
+      display: flex;
+      gap: 1.5rem;
+  
+      a {
+        text-decoration: none;
+        color: $text-color;
+        @include transition(color, 0.3s);
+  
+        &:hover {
+          color: darken($text-color, 10%);
+        }
+      }
+      img:first-child {
+        gap: 20rem;
+      }
+
+    }
+  
+    .footer-links {
+      display: flex;
+      gap: 1rem;
+  
+      a {
+        text-decoration: none;
+        color: $text-color;
+  
+        &:hover {
+          color: darken($text-color, 10%);
+        }
+      }
+    }
+  }
+  
+  
   
